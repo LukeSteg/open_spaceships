@@ -1,5 +1,6 @@
 #Windows build
 
+CFLAGS =  -g -Wall -v -s
 LIBS = -lSDL2
 
 C_FILES := $(wildcard src/*.cpp)
