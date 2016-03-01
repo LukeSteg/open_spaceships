@@ -1,5 +1,9 @@
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_opengl.h>
 #include <stdio.h>
+#include "graphics.h"
+
+using namespace std;
 
 #define FRAME_INTERVAL 16//in ms
 
@@ -9,19 +13,23 @@ if(SDL_Init(SDL_INIT_VIDEO)<0){printf("Failed to initialize SDL\n");return 0;}
 bool quit = false;
 SDL_Window* window = NULL;
 
+SDL_Renderer* ren;
+SDL_CreateWindowAndRenderer(1920,1080,SDL_WINDOW_OPENGL, &window, &ren);
 
-window = SDL_CreateWindow("Open Spaceships",SDL_WINDOWPOS_UNDEFINED,
-	SDL_WINDOWPOS_UNDEFINED,1920,1080,SDL_WINDOW_SHOWN);
+SDL_SetWindowTitle(window,"Open Spaceships : random window suffixes not yet a feature");
 
-if(!window){return -1;}
 
-SDL_Renderer* ren = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
-if(!ren){
+SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER,1);
+SDL_GLContext context = SDL_GL_CreateContext(window);
+
+if(!ren||!window) {
 	SDL_DestroyWindow(window);
-	printf("Failed to initialize SDL renderer!\n");
+	printf("Failed to initialize SDL window!\n");
 	SDL_Quit();
 	return -1;
 	}
+graphics gfx = graphics();
+gfx.Setup(ren);
 
 long long time;// in a galaxy far far away
 long long last_frame;
@@ -49,8 +57,12 @@ while(!quit) {
 	delta = time - last_frame;
 	if(delta >= FRAME_INTERVAL){
 	//Game Update(delta);
+   	 gfx.Render(delta);
+	//SDL_GL_SwapBuffers(); SDL 1.0
+    	//SDL_GL_SwapWindow(window);
+	SDL_RenderPresent(ren);
 	SDL_UpdateWindowSurface(window);//render
-
+	
 	last_frame = SDL_GetTicks();
 	delta = 0;
 	}
