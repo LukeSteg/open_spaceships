@@ -2,6 +2,7 @@
 #include <SDL2/SDL_opengl.h>
 #include <stdio.h>
 #include "graphics.h"
+#include "inputHandler.h"
 
 using namespace std;
 
@@ -53,7 +54,9 @@ while(!quit) {
 		case SDL_QUIT:{
 			quit = true;
 			break;}
-		default:{break;}
+		default:{
+            inputHandler::ParseEvent(&event);
+            break;}
 		}
 	}
 
