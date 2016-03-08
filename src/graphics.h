@@ -9,11 +9,10 @@
 
 class graphics
 {
-    SDL_Texture* spaceShipTexture;
-    SDL_Renderer* renderer;
+    GLuint texture;
     public:
           void Render(int delta);
-          bool Setup(SDL_Renderer* rend);
+          bool Setup();
           void Destroy();
 
 };
