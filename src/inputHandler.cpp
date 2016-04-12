@@ -14,7 +14,7 @@ int inputHandler::ParseEvent(SDL_Event* e)
                 printf("A KEY pressed\n");
                 break;}
             default:{
-                printf("UNREGISTERED key pressed\n");
+                printf("UNREGISTERED key pressed: %s\n", &e->key);
             }
         }
         break;}

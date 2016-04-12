@@ -26,7 +26,9 @@
 *.exe
 *.out
 *.app
+open_spaceships
 
 #temp files
 *~
 *.swp
+*.swo
