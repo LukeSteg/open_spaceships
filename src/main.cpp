@@ -50,9 +50,7 @@ SDL_Event event;
 while(!quit) {
 	while(SDL_PollEvent(&event)){
 		switch(event.type){
-		case SDL_QUIT:{
-			quit = true;
-			break;}
+			case SDL_QUIT:{quit = true;break;}
 		default:{break;}
 		}
 	}

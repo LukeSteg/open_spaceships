@@ -6,15 +6,32 @@
 
 #include <SDL2/SDL_opengl.h>
 #include <SDL2/SDL.h>
+#include <string>
+using namespace std;
+
+
+
+class VisualObject{
+	public:
+	GLuint texIndex;
+	float *vertices;
+	float *normals;
+	float *texCoords;
+	int vert_count;
+	void Unload();
+	~VisualObject();
+};
+
+int CreateVisualObject(VisualObject* vo,string filename);
+
 
 class graphics
 {
-    GLuint texture;
+    VisualObject vo;
     public:
           void Render(int delta);
           bool Setup();
           void Destroy();
-
 };
 
 #endif

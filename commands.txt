@@ -1,0 +1,3 @@
+copy contents of lib and include to user include/lib with these commands (from current dir):
+sudo cp -vr ./include /usr
+sudo cp -vr ./lib /usr
