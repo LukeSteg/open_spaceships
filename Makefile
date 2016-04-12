@@ -1,6 +1,6 @@
-#Windows build
+#Linux build
 
-LIBS = -lSDL2 -lGL -lSDL2_image -g
+LIBS = -lSDL2 -lGL -lSDL2_image -lassimp -lz
 
 C_FILES := $(wildcard src/*.cpp)
 OBJ_FILES := $(addprefix obj/,$(notdir $(C_FILES:.cpp=.o)))
