@@ -2,6 +2,7 @@
 #include <SDL2/SDL_opengl.h>
 #include <stdio.h>
 #include "graphics.h"
+#include "inputHandler.h"
 
 using namespace std;
 
@@ -51,23 +52,19 @@ while(!quit) {
 	while(SDL_PollEvent(&event)){
 		switch(event.type){
 			case SDL_QUIT:{quit = true;break;}
-		default:{break;}
+		default:{
+            inputHandler::ParseEvent(&event);
+            break;}
 		}
 	}
-
-
 
 	time = SDL_GetTicks();
 	delta = time - last_frame;
 	if(delta >= FRAME_INTERVAL){
 	//Game Update(delta);
    	 gfx.Render(delta);
-	
-	//SDL_GL_SwapBuffers(); SDL 1.0
     	
-	//SDL_RenderPresent(ren);
 	SDL_GL_SwapWindow(window);
-	//SDL_UpdateWindowSurface(window);//render
 	
 	last_frame = SDL_GetTicks();
 	delta = 0;

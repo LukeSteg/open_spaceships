@@ -121,7 +121,7 @@ void graphics::Render(int delta)
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	 
 	glClientActiveTexture(GL_TEXTURE0);
-	glBindTexture( GL_TEXTURE_2D, vo->texIndex );
+	glBindTexture( GL_TEXTURE_2D, vo.texIndex );
 	//for loop for all VO's
 	if(vo.vert_count > 0){	 
 	glVertexPointer(3,GL_FLOAT,0,vo.vertices);

@@ -6,15 +6,7 @@ int inputHandler::ParseEvent(SDL_Event* e)
     int returnValue = 1;
     switch(e->type){
     case SDL_KEYDOWN:{
-        switch(e->key.keysym.sym){
-            case SDLK_UP:{
-                printf("UP KEY pressed\n");
-                break;}
-            case SDLK_a:{
-                printf("A KEY pressed\n");
-                break;}
-            default:{
-                printf("UNREGISTERED key pressed: %s\n", &e->key);
+            printf("UNREGISTERED key pressed: %s\n", SDL_GetKeyName(e->key.keysym.sym));
             }
         }
         break;}
