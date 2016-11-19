@@ -1,8 +1,10 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
 #include <stdio.h>
+#include <iostream>
+
 #include "graphics.h"
-#include "inputHandler.h"
+#include "InputHandler.h"
 
 using namespace std;
 
@@ -49,11 +51,14 @@ SDL_Event event;
 
 
 while(!quit) {
+
+	VirtualKeyboard::registerKeyDownEvent(SDL_SCANCODE_W,[](){cout<<"Hello World"<<endl;});//test for output
+
 	while(SDL_PollEvent(&event)){
 		switch(event.type){
 			case SDL_QUIT:{quit = true;break;}
 		default:{
-            inputHandler::ParseEvent(&event);
+            InputHandler::ParseEvent(&event);
             break;}
 		}
 	}

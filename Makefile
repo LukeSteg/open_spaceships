@@ -1,6 +1,7 @@
 #Linux build
 
 LIBS = -lSDL2 -lGL -lSDL2_image -lassimp -lz
+CFLAGS = -std=c++11
 
 C_FILES := $(wildcard src/*.cpp)
 OBJ_FILES := $(addprefix obj/,$(notdir $(C_FILES:.cpp=.o)))

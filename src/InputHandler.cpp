@@ -1,15 +1,16 @@
-#include "inputHandler.h"
+#include "InputHandler.h"
 #include <stdio.h>
 
-int inputHandler::ParseEvent(SDL_Event* e)
+
+int InputHandler::ParseEvent(SDL_Event* e)
 {
     int returnValue = 1;
     switch(e->type){
         case SDL_KEYUP:{
-            virtualKeyboard::newKeyUpEvent(e);
+            VirtualKeyboard::newKeyUp(e);
             break;}
         case SDL_KEYDOWN:{
-            virtualKeyboard::newKeyDownEvent(e);
+            VirtualKeyboard::newKeyDown(e);
             break;}
         default:{
             returnValue = 0;

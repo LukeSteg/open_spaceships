@@ -2,9 +2,9 @@
 #define INPUTHANDLER_H
 
 #include <SDL2/SDL.h>
-#include "virtualKeyboard.h"
+#include "VirtualKeyboard.h"
 
-class inputHandler
+class InputHandler
 {
     public:
         static int ParseEvent(SDL_Event* e);
