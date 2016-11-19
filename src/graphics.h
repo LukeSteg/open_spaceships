@@ -4,16 +4,24 @@
 #define SCREENHEIGHT 1080
 #define FIELD_OF_VIEW 90.0f
 
-#include <SDL2/SDL_opengl.h>
+
+#define MAX_MATRIX_STACK 10
+
+
+
+
 #include <SDL2/SDL.h>
 #include <string>
+#include "types.h"
+#include "shader.h"
+
 using namespace std;
 
 
 
 class VisualObject{
 	public:
-	GLuint texIndex;
+	GLuint texID,vertID,coordID;
 	float *vertices;
 	float *normals;
 	float *texCoords;
@@ -28,6 +36,11 @@ int CreateVisualObject(VisualObject* vo,string filename);
 class graphics
 {
     VisualObject vo;
+	Mat4 Modelview[MAX_MATRIX_STACK];
+	Mat4 Projection[MAX_MATRIX_STACK];
+	Shader shader;
+	int	 Modelview_Stack;
+	int  Projection_Stack;
     public:
           void Render(int delta);
           bool Setup();
