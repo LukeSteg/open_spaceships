@@ -2,6 +2,7 @@
 #define INPUTHANDLER_H
 
 #include <SDL2/SDL.h>
+#include "virtualKeyboard.h"
 
 class inputHandler
 {
